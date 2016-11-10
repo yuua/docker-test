@@ -1,0 +1,16 @@
+version: '2'
+services:
+  mongo:
+    restart: always
+    image: mongo
+    volumes:
+      - /Users/yuya-noguchi/data/mongo-data:/data/db
+    ports:
+      - 27017:27017
+    hostname: mongo
+  ruby_script:
+    build: .
+    volumes:
+      - /Users/yuya-noguchi/data/myapp
+    links:
+      - mongo
